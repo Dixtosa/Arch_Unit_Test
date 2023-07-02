@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{8165BC9A-389D-428E-A5E7-B52776518AA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleProject.ArchTests", "TestProject1\ExampleProject.ArchTests.csproj", "{8165BC9A-389D-428E-A5E7-B52776518AA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{51562AE5-D1C7-498F-8017-2585808CD1C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleProject.WebApi", "WebApplication1\ExampleProject.WebApi.csproj", "{51562AE5-D1C7-498F-8017-2585808CD1C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{8ADE6EB1-FE7B-49C9-AECE-6A7778DE9920}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleProject.Domain", "ClassLibrary1\ExampleProject.Domain.csproj", "{8ADE6EB1-FE7B-49C9-AECE-6A7778DE9920}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

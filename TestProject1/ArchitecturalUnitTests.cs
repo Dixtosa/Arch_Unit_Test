@@ -1,10 +1,9 @@
 using ArchUnitNET.Domain;
 using ArchUnitNET.Domain.Extensions;
-using ArchUnitNET.Fluent;
-using ArchUnitNET.Fluent.Predicates;
 using ArchUnitNET.Loader;
 using ArchUnitNET.xUnit;
-using Microsoft.AspNetCore.Mvc;
+using ClassLibrary1;
+using WebApplication1.Controllers;
 using Xunit;
 using static ArchUnitNET.Fluent.ArchRuleDefinition;
 
@@ -33,25 +32,25 @@ namespace TestProject1
         }
     }
 
-    public class UnitTest1
+    public class ArchitecturalUnitTests
     {
         private static readonly Architecture Architecture = new ArchLoader().LoadAssemblies(
-            System.Reflection.Assembly.Load("WebApplication1"),
-            System.Reflection.Assembly.Load("ClassLibrary1")
+            typeof(WeatherForecastController).Assembly,
+            typeof(ExampleDomainModel).Assembly
             ).Build();
 
         [Fact]
         public void TypesShouldBeInCorrectLayer()
         {
-            var cnt = Classes(true).GetObjects(Architecture).Count();
+            string testDescription = "Domain layer models should not be returned in Controller";
+            string errorMessage = "One of the domain model is returned from Controller!";
 
-            var domainLayer = System.Reflection.Assembly.Load("ClassLibrary1");
+            var domainLayer = typeof(ExampleDomainModel).Assembly;
+            var rule = Classes(includeReferenced: true).That().ResideInAssembly(domainLayer)
+                        .Should()
+                        .FollowCustomCondition(Predicate.IsNotUsedByAnyControllerAsReturnType(Architecture), testDescription, errorMessage);
 
-            var rule1 = Classes(true).That().ResideInAssembly(domainLayer).Should().FollowCustomCondition(Predicate.IsNotUsedByAnyControllerAsReturnType(Architecture), 
-                "Domain layer models should not be returned in controller", 
-                "One of the domain model is returned from Controller!");
-
-            rule1.Check(Architecture);
+            rule.Check(Architecture);
         }
     }
 }

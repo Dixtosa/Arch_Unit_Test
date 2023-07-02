@@ -21,9 +21,9 @@ public class WeatherForecastController : ControllerBase
         return new ExampleVm();
     }
 
-    //[HttpGet(Name = "GetExampleDomainModel")]
-    //public ExampleDomainModel GetExampleDomainModel()
-    //{
-    //    return new ExampleDomainModel();
-    //}
+    [HttpGet(Name = "GetExampleDomainModel")]
+    public ExampleDomainModel GetExampleDomainModel()
+    {
+        return new ExampleDomainModel();
+    }
 }
